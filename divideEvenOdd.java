@@ -1,19 +1,15 @@
-import java.util.List;
-import java.util.ArrayList;
 public class divideEvenOdd {
     public static void main(String[] args) {
-        String text = "test";
-        List<Character> even = new ArrayList<>();
-        List<Character> odd = new ArrayList<>();
+        StringBuilder text = new StringBuilder("test");
+        StringBuilder even = new StringBuilder();
 
         for(int i = 0; i < text.length(); i++) {
             if(text.charAt(i) % 2 == 0) {
-                even.add(text.charAt(i));
-            } else {
-                odd.add(text.charAt(i));
+                even.append(text.charAt(i));
+                text.deleteCharAt(i);
             }
         }
         System.out.println("Even: " + even);
-        System.out.println("Odd: " + odd);
+        System.out.println("Odd: " + text);
     }
 }
