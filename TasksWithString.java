@@ -1,18 +1,18 @@
 import java.util.*;
 
-public class tasksWithString {
+public class TasksWithString {
     public static void main(String[] args) {
 //        divideEvenOdd();
 //        countDigitsFromString();
 //        createOnlyDigitLine();
 //        deleteSameCharacters();
-//        symbolFrequency();
+//        symbolFrequency("This is test text");
 //        lineReverse();
 //        substringInString();
-//        reverseWordsOfLine();
+//        reverseWordsOfLine("friend my Hello");
 //        arrayAlphabeticalSort();
 //        shortestWordLength();
-//        wordsCounter();
+//        wordsCounter("Count words in this line");
 //        addSpaces();
 //        isPalindrome();
 //        replaceSubString();
@@ -64,24 +64,24 @@ public class tasksWithString {
             formattedText.add(text.charAt(i));
         }
 
-        for (char i: formattedText) {
+        for (char i : formattedText) {
             result.append(i);
         }
         System.out.println("Removed duplicates: " + result);
     }
 
-    private static void symbolFrequency() {
-        String text = "This is test text";
+    static HashMap<Character, Integer> symbolFrequency(String text) {
         HashMap<Character, Integer> frequency = new HashMap<>();
 
-        for(int i = 0; i < text.length(); i++) {
+        for (int i = 0; i < text.length(); i++) {
             if (frequency.containsKey(text.charAt(i))) {
                 frequency.replace(text.charAt(i), frequency.get(text.charAt(i)) + 1);
             } else {
                 frequency.put(text.charAt(i), 1);
             }
         }
-        System.out.println(frequency);
+        System.out.println("Frequency of each character: " + frequency);
+        return frequency;
     }
 
     private static void lineReverse() {
@@ -105,8 +105,7 @@ public class tasksWithString {
                 + text + ": " + number);
     }
 
-    private static void reverseWordsOfLine() {
-        String text = "friend my Hello";
+    static String reverseWordsOfLine(String text) {
         Stack<String> words = new Stack<>();
 
         StringBuilder tempWord = new StringBuilder();
@@ -125,13 +124,14 @@ public class tasksWithString {
         while (!words.isEmpty()) {
             tempWord.append(words.pop()).append(" ");
         }
-        System.out.println(tempWord);
+        System.out.println("Reversed line: " + tempWord);
+        return tempWord.toString();
     }
 
     private static void arrayAlphabeticalSort() {
-        String[] linesArr = new String[] {"sort", "Alphabetical", "array"};
+        String[] linesArr = new String[]{"sort", "Alphabetical", "array"};
         Arrays.sort(linesArr);
-        for (String word: linesArr) {
+        for (String word : linesArr) {
             System.out.print(word + " ");
         }
     }
@@ -153,7 +153,7 @@ public class tasksWithString {
         int min = words.get(0).length();
         String shortestWord = "";
 
-        for (String word: words) {
+        for (String word : words) {
             if (word.length() < min) {
                 min = word.length();
                 shortestWord = word;
@@ -162,21 +162,20 @@ public class tasksWithString {
         System.out.println("Shortest substring is '" + shortestWord + "' with length " + min);
     }
 
-    private static void wordsCounter() {
-        String text = "Count words in this line";
-
+    static int wordsCounter(String text) {
         int nullValidator = 0;
         int wordsCounter = 0;
-        for(int i = 0; i < text.length(); i++) {
+        for (int i = 0; i < text.length(); i++) {
             if ((text.charAt(i) == ' ' || i == text.length() - 1) && nullValidator > 0) {
                 wordsCounter++;
                 nullValidator = 0;
-            } else if(text.charAt(i) != ' ') {
+            } else if (text.charAt(i) != ' ') {
                 nullValidator++;
             }
         }
 
-        System.out.println("Words: " + wordsCounter);
+        System.out.println("Number of words: " + wordsCounter);
+        return wordsCounter;
     }
 
     private static void addSpaces() {
@@ -185,7 +184,7 @@ public class tasksWithString {
         spacesIndex.add(12);
         StringBuilder text = new StringBuilder("Textwithoutspaces");
 
-        for (int space: spacesIndex) {
+        for (int space : spacesIndex) {
             text.insert(space, " ");
         }
         System.out.println(text);
@@ -195,7 +194,7 @@ public class tasksWithString {
         StringBuilder text = new StringBuilder("Yo, banana boy!");
         StringBuilder reversed = new StringBuilder();
 
-        for (int i = text.length() - 1; i >= 0 ; i--) {
+        for (int i = text.length() - 1; i >= 0; i--) {
             if (Character.isLetterOrDigit(text.charAt(i))) {
                 reversed.append(text.charAt(i));
             } else {

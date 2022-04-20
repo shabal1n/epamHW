@@ -1,4 +1,4 @@
-public class classesHierarchy {
+public class ClassesHierarchy {
     public static void main(String[] args) {
 //        Transport transport = new Transport(1524.2, 5, "diesel");
 //        transport.printInfo();
